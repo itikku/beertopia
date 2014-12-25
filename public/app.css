@@ -1,0 +1,70 @@
+/* app css stylesheet */
+
+html {
+  background-color: #7088a8;
+}
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 75%
+}
+
+div .column{
+  float: left;
+  width: 45%;
+  margin: 2%;
+}
+
+td label{
+  text-align: right;
+}
+
+.beer {
+  padding-bottom: 10px;
+  border: 5px solid #666666;
+  background-color: #e0ccb1;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.comment {
+  background-color: #8cd2b4;
+  color: white;
+  border-bottom: 3px solid #666666;
+  vertical-align: middle;
+  padding: 7px;
+  border-radius: 10px;
+  padding-left: 15px;
+}

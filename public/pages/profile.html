@@ -1,0 +1,86 @@
+<!--
+<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
+-->
+<html>
+<div class="column">
+	<form ng-submit="add()">
+			<div class="form-group">
+				<table>
+					<tr>
+		  				<th><label><u>Create Beer</u></label></th>
+		  			</tr>
+		  			<tr>
+		  				<td>
+		  					<label> Beer Name: </label>
+		  				</td>
+		  				<td>
+		  					<input type="text" name="newBeerName" ng-model="newBeerName">
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td>
+		  					<label> Your Comment: </label>
+		  				</td>
+		  				<td>
+		  					<input type="text" name="newBeerComment" ng-model="newBeerComment">
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td>
+		  					<input type="submit" class="submit" value="Submit" ng-model="newSubmit"/>
+		  				</td>		  				
+		  			</tr>
+		  		</table>
+			</div>
+		</form>
+	<h2><u> Your beers: </u></h2>
+		<div class="beer" ng-repeat="beer in allbeers | filter:isOwnedByMe">		
+			<label>
+				<h3>{{beer.name}}</h3>
+				<a ng-click="del(this)" name="{{beer.name}}">Delete</a>
+				<!--<div ng-show="!isFavourite(beer)">
+					<a ng-click="favourite(this)" name="{{beer.name}}">Favourite?</a>
+				</div>
+				<div ng-show="isFavourite(beer)">
+					<i class="fa fa-heart"></i>
+					<a ng-click="unfavourite(this)" name="{{beer.name}}">UnFavourite?</a>
+				</div>-->
+			</label>
+			<h5>{{beer.publicComment}}</h5>
+			<div class="comment" ng-repeat="comment in beer.privateComment">
+				<label>{{comment.userID}}</label>'s thoughts:<i> {{comment.comment}} </i>
+			</div>
+		</div>
+		<div class="beer" ng-repeat="beer in allbeers | filter:isAlsoMine">
+			<label>
+				<h3>{{beer.name}}</h3>
+				<a ng-click="remove(this)" name="{{beer.name}}">Remove</a>
+			</label>
+			<h5>{{beer.publicComment}}</h5>
+			<div class="comment" ng-repeat="comment in beer.privateComment">
+				<label>{{comment.userID}}</label>'s thoughts:<i> {{comment.comment}} </i>
+			</div>
+		</div>
+</div>
+<div class="column">
+	<input type="submit" value="Log Out" ng-click="logout()" />
+	<h2><u> Beers added by other users: </u></h2>
+	<b>Your Comment: </b>
+	<input type="text" name="existBeerComment" ng-model="existBeerComment">
+	<br>
+	<div class="beer" ng-repeat="beer in allbeers | filter:'!'+isOwnedByMe | filter:isNotMine">
+		<label>
+			<h3>{{beer.name}}</h3>		
+			<a ng-click="addtomine(this)" name="{{beer.name}}">Add</a>
+		</label>			
+		<h5>{{beer.publicComment}}</h5>
+		<b>{{'Added By: ' + beer.owner}}</b>
+		<div class="comment" ng-repeat="comment in beer.privateComment">
+			<label>{{comment.userID}}</label>'s thoughts:<i> {{comment.comment}} </i>
+		</div>
+	</div>
+</div>
+</html>
