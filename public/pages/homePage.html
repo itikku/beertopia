@@ -1,48 +1,17 @@
 <html>
-<div class="wrapper">
-	<div class="column">
-		<br>
-		<form ng-submit="login()">
-	  	<div class="form-group">
-	  		<table>
-	  			<th><h3>Log In</h3></th>
-	  			<tr>
-	  				<td>
-	  					<label>Username: </label>
-	  				</td>
-	  				<td>
-	  					<input type="text" name="loginUser" ng-model="loginUser">
-	  				</td>
-	  			</tr>
-	  			<tr>
-	  				<td>
-	  					<label> Password: </label>
-	  				</td>
-	  				<td>
-	  					<input type="password" name="loginPwd" ng-model="loginPwd">
-	  				</td>
-	  			</tr>
-	  			<tr>
-	  				<td>
-	  					<input type="submit" value="Submit" ng-model="loginSubmit" /> 
-	  				</td>
-	  			</tr>
-	  		</table>
-	  	</div>
-	  	</form>
-	  
-
-	  
-		<form ng-submit="register()">
-			<div class="form-group">
-				<table>
-		  			<th><h3>Register</h3></th>
+<body>
+	<div class="wrapper">
+		<div class="column">
+			<form ng-submit="login()">
+		  	<div class="form-group">
+		  		<table>
+		  			<th><h3>Log In</h3></th>
 		  			<tr>
 		  				<td>
 		  					<label>Username: </label>
 		  				</td>
 		  				<td>
-		  					<input type="text" name="regUser" ng-model="regUser">
+		  					<input type="text" name="loginUser" ng-model="loginUser">
 		  				</td>
 		  			</tr>
 		  			<tr>
@@ -50,31 +19,65 @@
 		  					<label> Password: </label>
 		  				</td>
 		  				<td>
-		  					<input type="password" name="regPwd" ng-model="regPwd">
+		  					<input type="password" name="loginPwd" ng-model="loginPwd">
 		  				</td>
 		  			</tr>
 		  			<tr>
 		  				<td>
-		  					<input type="submit" value="Submit" ng-model="regSubmit"/>
+		  					<input type="submit" value="Submit" ng-model="loginSubmit" /> 
 		  				</td>
-		  				
 		  			</tr>
+
 		  		</table>
-			</div>
-		</form>
-	</div>
-	<div class="column">
-		<h2><u> Beers added by our users </u></h2>
-		<div class="beer" ng-repeat="beer in beers">			
-			<h3>{{beer.name}}</h3>
-			<h5>{{beer.publicComment}}</h5>
-			<b>{{'Added By: ' + beer.owner}}</b>
-			<!--<div ng-repeat="comment in beer.privateComment">
-				<br><label>Comment Author: </label>{{comment.userID}}
-				<br><label>Comment: </label><i>{{comment.comment}}</i>
-			</div>-->
-			
+		  	</div>
+		  	</form>
+
+			<form ng-submit="register()">
+				<div class="form-group">
+					<table>
+			  			<th><h3>Register</h3></th>
+			  			<tr>
+			  				<td>
+			  					<label>Username: </label>
+			  				</td>
+			  				<td>
+			  					<input type="text" name="regUser" ng-model="regUser">
+			  				</td>
+			  			</tr>
+			  			<tr>
+			  				<td>
+			  					<label> Password: </label>
+			  				</td>
+			  				<td>
+			  					<input type="password" name="regPwd" ng-model="regPwd">
+			  				</td>
+			  			</tr>
+			  			<tr>
+			  				<td>
+			  					<input type="submit" value="Submit" ng-model="regSubmit"/>
+			  				</td>
+			  				
+			  			</tr>
+			  		</table>
+				</div>
+			</form>
+		</div>
+
+		<div class="column beer-list">
+			<h2> Beers added by our users </h2>
+			<accordion>	
+				<accordion-group class="beer" ng-repeat="beer in beers" heading="{{beer.name}}" is-open="false" is-disabled="false">
+					<div>
+						<h5>{{beer.publicComment}}</h5>
+						<b>{{'Added By: ' + beer.owner}}</b>
+					</div>
+				</accordion-group>
+				<!--<div ng-repeat="comment in beer.privateComment">
+					<br><label>Comment Author: </label>{{comment.userID}}
+					<br><label>Comment: </label><i>{{comment.comment}}</i>
+				</div>-->
+			</accordion>
 		</div>
 	</div>
-</div>
+</body>
 </html>

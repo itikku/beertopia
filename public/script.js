@@ -4,7 +4,7 @@
 	Beer Topia Angular Application
 	*/
 
-angular.module('beerApp', ['ui.router', 'ngResource'])
+angular.module('beerApp', ['ui.router', 'ngResource', 'ui.bootstrap'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
